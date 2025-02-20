@@ -47,9 +47,10 @@ Text Generation: Models like GPT-3, GPT-Neo, or Google Gemini.
 Application Framework: Streamlit or Gradio for the interface.
 
 Deployment Platforms: Hugging Face Spaces or AWS.
+
 Results:
 
-    Successfully developed a web application for Tamil-to-English translation and image generation.
-    Achieved accurate translations and relevant image synthesis using Hugging Face models.
-    Enhanced user experience with a seamless interface via Streamlit/Gradio.
-    Delivered scalable and secure deployment with comprehensive documentation.
+    1. Successfully developed a web application for Tamil-to-English translation and image generation.
+    2. Achieved accurate translations and relevant image synthesis using Hugging Face models.
+    3. Enhanced user experience with a seamless interface via Streamlit/Gradio.
+    4. Delivered scalable and secure deployment with comprehensive documentation.
