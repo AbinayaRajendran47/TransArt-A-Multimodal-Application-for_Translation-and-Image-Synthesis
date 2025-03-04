@@ -19,7 +19,6 @@ client = Groq(api_key=GROQ_API_KEY)
 # Use a Public Hugging Face Image Model
 HF_IMAGE_MODEL = "stabilityai/stable-diffusion-2-1"
 
-
 # Function 1: Tamil Audio to Tamil Text (Transcription)
 def transcribe_audio(audio_path):
     if not audio_path:
@@ -37,7 +36,6 @@ def transcribe_audio(audio_path):
 
     except Exception as e:
         return f"Error in transcription: {str(e)}"
-
 
 # Function 2: Tamil Text to English Translation
 def translate_tamil_to_english(tamil_text):
@@ -59,7 +57,6 @@ def translate_tamil_to_english(tamil_text):
 
     except Exception as e:
         return f"Error in translation: {str(e)}"
-
 
 # Function 3: English Text to Image Generation (Hugging Face)
 def generate_image(english_text):
@@ -84,7 +81,6 @@ def generate_image(english_text):
     except Exception as e:
         return f"Error in image generation: {str(e)}"
 
-
 # Function 4: English Text to AI-Generated Text
 
 def generate_text(english_text):
@@ -107,7 +103,6 @@ def generate_text(english_text):
 
     except Exception as e:
         return f"Error in text generation: {str(e)}"
-
 
 # Combined Function to Process All Steps
 def process_audio(audio_path):
@@ -132,18 +127,51 @@ def process_audio(audio_path):
 
 
 # Create Gradio Interface
-iface = gr.Interface(
-    fn=process_audio,
-    inputs=gr.Audio(type="filepath", label="Upload Tamil Audio"),
-    outputs=[
-        gr.Textbox(label="Transcribed Tamil Text"),
-        gr.Textbox(label="Translated English Text"),
-        gr.Image(label="Generated Image"),
-        gr.Textbox(label="Generated Text from English Prompt"),
-    ],
-    title="Tamil Audio to AI Processing Pipeline",
-    description="Upload a Tamil audio file and get transcription, translation, image generation, and further text generation.",
-)
+def clear_outputs():
+    return "", "", None, ""
 
-# Launch Gradio App
-iface.launch()
+# --- Creative Gradio Interface ---
+with gr.Blocks() as demo:
+    # Title & Subtitle with Emojis
+    gr.Markdown("### 🎨 **TransArt: Multimodal Tamil Audio Experience**")
+    gr.Markdown("**Transform Tamil audio into captivating content** – from transcription and English translation to stunning AI-generated images and creative narratives! 🌟")
+
+    # Visual Separator
+    gr.Markdown("---")
+
+    # Row for Audio Input + Buttons
+    with gr.Row():
+        audio_input = gr.Audio(type="filepath", label="🎶 Upload Tamil Audio")
+        with gr.Column():
+            submit_button = gr.Button("✨ Submit")
+            clear_button = gr.Button("🧹 Clear")
+
+    # Another Separator for clarity
+    gr.Markdown("---")
+
+    # Row for Transcribed Tamil (left) & Translated English (right)
+    with gr.Row():
+        transcribed_text = gr.Textbox(label="📝 Transcribed Tamil Text")
+        translated_text = gr.Textbox(label="🌐 Translated English Text")
+
+    # Separator
+    gr.Markdown("---")
+
+    # Row for Generated Image (left) & Generated Text (right)
+    with gr.Row():
+        generated_image = gr.Image(label="🎨 Generated AI Image")
+        generated_text = gr.Textbox(label="💡 Generated English Text")
+
+    # Button actions
+    submit_button.click(
+        fn=process_audio,
+        inputs=audio_input,
+        outputs=[transcribed_text, translated_text, generated_image, generated_text],
+    )
+    clear_button.click(
+        fn=clear_outputs,
+        inputs=[],
+        outputs=[transcribed_text, translated_text, generated_image, generated_text],
+    )
+
+demo.launch()
