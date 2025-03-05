@@ -20,16 +20,20 @@ Objectives
 ✅ Translate Tamil text into English using LLaMA 3 (8B-8192) on Groq.
 ✅ Generate AI-powered images using Stable Diffusion 2.1.
 ✅ Generate additional creative text using LLaMA 3 (8B-8192).
+
 Business Use Cases
 1️⃣ Educational Tools
 
 Scenario: Students or educators upload Tamil audio descriptions, which are transcribed, translated, and converted into relevant images.
 Impact: Enhances learning through a combination of auditory, textual, and visual elements.
+
 2️⃣ Creative Content Generation
 
 Scenario: Content creators input Tamil descriptions, which are transformed into English text and visually rendered as images.
 Impact: Simplifies the creation of visuals for storytelling, digital marketing, and design.
+
 Tech Stack & Tools
+
 Component	Technology Used
 Speech-to-Text	Whisper Large v3
 Language Translation	LLaMA 3 (8B-8192) - Groq
