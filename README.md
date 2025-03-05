@@ -1,4 +1,5 @@
 TransArt: A Multimodal Application for Vernacular Language Processing and AI-Generated Content
+
 Problem Statement
 
 To develop an AI-powered web application that processes Tamil audio input, transcribes it into Tamil text, translates it into English, and then generates relevant images and creative written content based on the translated text. This project showcases a seamless pipeline integrating speech recognition, language translation, text-to-image synthesis, and AI-driven text generation.
